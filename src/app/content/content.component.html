@@ -1,0 +1,110 @@
+<div class="container text-center mt-4 mb-4">
+    <div class="row info-p p-2">
+        <h5>Informations About Deceased Man</h5>
+    </div>
+    <div class="row ms-2 mb-3 mt-2">
+        <label for="colFormLabel" class="col-5 col-form-label">Property amount:</label>
+        <div class="col-5">
+            <input type="number" class="form-control" id="overall" value="0" [(ngModel)]="value1" name="overall">
+        </div>
+    </div>
+
+    <div class="row ms-2 mb-3">
+        <label for="colFormLabel" class="col-5 col-form-label">Father:</label>
+        <div class="col-3">
+            <select class="form-select" id="father" [(ngModel)]="father">
+                <option [value]="true">Yes</option>
+                <option [value]="false">No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row ms-2 mb-3">
+        <label for="colFormLabel" class="col-5 col-form-label">Mother:</label>
+        <div class="col-3">
+            <select class="form-select" id="mother" [(ngModel)]="mother">
+                <option [value]="true">Yes</option>
+                <option [value]="false">No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row ms-2 mb-3">
+        <label for="colFormLabel" class="col-5 col-form-label">Wife:</label>
+        <div class="col-3">
+            <select class="form-select" id="wife" [(ngModel)]="wife">
+                <option [value]="true">Yes</option>
+                <option [value]="false">No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row ms-2 mb-3">
+        <label for="colFormLabel" class="col-5 col-form-label">Number of son(s):</label>
+        <div class="col-3">
+            <input type="number" class="form-control" id="son" [(ngModel)]="valueS" name="son">
+        </div>
+    </div>
+
+    <div class="row ms-2 mb-3">
+        <label for="colFormLabel" class="col-5 col-form-label">Number of daughter(s):</label>
+        <div class="col-3">
+            <input type="number" class="form-control" id="daughter" value="0" [(ngModel)]="value" name="daughter">
+        </div>
+    </div>
+
+    <div class="row ms-2 mb-3">
+        <label for="colFormLabel" class="col-5 col-form-label">Brother(s):</label>
+        <div class="col-3">
+            <input type="number" class="form-control" id="brother" value="0" [(ngModel)]="valueBro" name="brother">
+        </div>
+    </div>
+
+    <div class="row ms-2 mb-3">
+        <label for="colFormLabel" class="col-5 col-form-label">Sister(s):</label>
+        <div class="col-3">
+            <input type="number" class="form-control" id="sister" value="0" [(ngModel)]="valueSis" name="sister">
+        </div>
+    </div>
+
+    <div class="d-grid col-6 mt-4 mx-auto">
+        <button type="button" (click)="Calculate()" class="btn btn-primary btn-lg">Calculate</button>
+    </div>
+</div>
+
+
+<div class="table-responsive mb-4">
+    <table class="table rounded table-success table-bordered align-middle">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    <h5 class="text-center">Division of Inheritance result</h5>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-warning">
+                <td>The Share of sons</td>
+                <td>The Share of daughters</td>
+                <td>The Share of mother</td>
+                <td>The Share of father</td>
+            </tr>
+            <tr class="table-warning">
+                <td>{{ resultS }}</td>
+                <td>{{ resultD }}</td>
+                <td>{{ resultM }}</td>
+                <td>{{ resultF }}</td>
+            </tr>
+            <tr class="table-warning">
+                <td>The Share of the Wife</td>
+                <td>The Share of Sisters</td>
+                <td colspan="2">The Share of Brothers</td>
+            </tr>
+            <tr class="table-warning">
+                <td>{{ resultW }}</td>
+                <td>{{ resultSi }}</td>
+                <td colspan="2">{{ resultB }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

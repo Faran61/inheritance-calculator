@@ -1,0 +1,241 @@
+
+Calculate() {
+    var Mal = Number((document.getElementById('colFormLabel') as HTMLInputElement | null)!.value);
+    var ECs = Number((document.getElementById('SonSelect') as HTMLSelectElement | null)!.selectedIndex);
+    var KCs = Number((document.getElementById('DaughterSelect') as HTMLSelectElement | null)!.selectedIndex);
+    var EKs = Number((document.getElementById('BrotherSelect') as HTMLSelectElement | null)!.selectedIndex);
+    var KKs = Number((document.getElementById('SisterSelect') as HTMLSelectElement | null)!.selectedIndex);
+    var BabaVar = Number((document.getElementById('FatherSelect') as HTMLSelectElement | null)!.selectedIndex);
+    var AnneVar = Number((document.getElementById('MotherSelect') as HTMLSelectElement | null)!.selectedIndex);
+    var EsVar = Number((document.getElementById('WivesSelect') as HTMLSelectElement | null)!.selectedIndex);
+
+    var ECp = 0;
+    var KCp = 0;
+    var Ap = 0;
+    var Bp = 0;
+    var EsHesap = 0;
+    var Es1p = 0;
+    var Es2p = 0;
+    var Es3p = 0;
+    var Es4p = 0;
+    var EKp = 0;
+    var KKp = 0;
+    var Xp = 0;
+    var Mdan = 0;
+    var KisiBasiPay = 0;
+    var AraHesap = 0;
+    if (ECs > 0) {
+      ECp = ECs * (2 * (Mal / (2 * ECs + KCs)));
+      KCp = (KCs > 0 ? KCs * (Mal / (2 * ECs + KCs)) : 0);
+    }
+    else if (ECs == 0 && KCs >= 2) {
+
+      KCp = 2 * (Mal / 3);
+      Mdan = Mal - KCp;
+      Ap = (AnneVar == 1 ? (1 / 6) * Mdan : 0);
+      Bp = (BabaVar == 1 ? (1 / 6) * Mdan : 0);
+      EsHesap = (EsVar > 0 ? (1 / 8) * Mdan : 0);
+    }
+    else if (ECs == 0 && KCs == 1) {
+      KCp = Mal / 2;
+      Mdan = Mal - KCp;
+      Ap = (AnneVar == 1 ? (1 / 6) * Mdan : 0);
+      Bp = (BabaVar == 1 ? (1 / 6) * Mdan : 0);
+      EsHesap = (EsVar > 0 ? (1 / 8) * Mdan : 0);
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 1 && EKs == 0 && KKs == 0) {
+      Ap = (AnneVar == 1 ? (1 / 3) * Mal : 0);
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Bp = Mal - (Ap + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 1 && (EKs + KKs) >= 2) {
+
+      Ap = (1 / 6) * Mal;
+      AraHesap = (1 / 3) * Mal;
+      EKp = EKs * (2 * (AraHesap / (2 * EKs + KKs)));
+      KKp = KKs * (AraHesap / (2 * EKs + KKs));
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Ap += Mal - (Ap + EKp + KKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 1 && EKs == 1 && KKs == 0) {
+      Ap = (1 / 3) * Mal;
+      EKp = (1 / 6) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Ap += Mal - (Ap + EKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 1 && EKs == 0 && KKs == 1) {
+      Ap = (1 / 3) * Mal;
+      KKp = (1 / 6) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Ap += Mal - (Ap + KKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 0 && EKs == 0 && KKs == 1) {
+      KKp = (1 / 2) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 0 && EKs >= 1 && KKs == 0) {
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      EKp = Mal - (EsHesap * EsVar);
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 0 && EKs == 0 && KKs >= 2) {
+      EsHesap = (EsVar > 0 ? (1 / 4) * (Mal / 2) : 0);
+      Mdan = Mal - (EsHesap * EsVar);
+      KKp = (2 / 3) * Mdan;
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 0 && EKs > 0 && KKs > 0) {
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Mdan = Mal - (EsHesap * EsVar);
+      EKp = EKs * (2 * (Mdan / (2 * EKs + KKs)));
+      KKp = KKs * (Mdan / (2 * EKs + KKs));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 1 && EKs == 0 && KKs == 0) {
+      Ap = (1 / 3) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Ap += Mal - (Ap + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 0 && AnneVar == 0 && EKs == 0 && KKs == 0) {
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 1 && AnneVar == 1 && (EKs + KKs) >= 2) {
+      Ap = (1 / 6) * Mal;
+      AraHesap = (1 / 3) * Mal;
+      EKp = EKs * (2 * (AraHesap / (2 * EKs + KKs)));
+      KKp = KKs * (AraHesap / (2 * EKs + KKs));
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Bp = Mal - (Ap + EKp + KKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 1 && AnneVar == 1 && EKs == 1 && KKs == 0) {
+      Ap = (1 / 3) * Mal;
+      EKp = (1 / 6) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Bp = Mal - (Ap + EKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 1 && AnneVar == 1 && EKs == 0 && KKs == 1) {
+      Ap = (1 / 3) * Mal;
+      KKp = (1 / 6) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Bp = Mal - (Ap + KKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 1 && AnneVar == 0 && (EKs + KKs) >= 2) {
+      AraHesap = (1 / 3) * Mal;
+      EKp = EKs * (2 * (AraHesap / (2 * EKs + KKs)));
+      KKp = KKs * (AraHesap / (2 * EKs + KKs));
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Bp = Mal - (Ap + EKp + KKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 1 && AnneVar == 0 && EKs == 1 && KKs == 0) {
+      EKp = (1 / 6) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Bp = Mal - (Ap + EKp + (EsHesap * EsVar));
+    }
+    else if (ECs == 0 && KCs == 0 && BabaVar == 1 && AnneVar == 0 && EKs == 0 && KKs == 1) {
+      KKp = (1 / 6) * Mal;
+      Mdan = Mal / 2;
+      EsHesap = (EsVar > 0 ? (1 / 4) * Mdan : 0);
+      Bp = Mal - (Ap + KKp + (EsHesap * EsVar));
+    }
+
+
+
+    if (ECp>0) {
+      document.getElementById('ECp')!.style.color = "red";
+      KisiBasiPay = ECp / ECs;
+    }
+    else { document.getElementById('ECp')!.style.color = "black"; }
+    if (ECp > 0) { document.getElementById('ECp')!.innerHTML = Math.round(KisiBasiPay * 100) / 100 + (ECs > 1 ? " x " + ECs + "<br\> (" + Math.round(ECp * 100) / 100 + ")" : ""); }
+    else { document.getElementById('ECp')!.innerHTML = ""; }
+
+
+    if (KCp > 0) {
+      document.getElementById('KCp')!.style.color = "red";
+      KisiBasiPay = KCp / KCs;
+    }
+    else { document.getElementById('KCp')!.style.color = "black"; }
+    if (KCp > 0) { document.getElementById('KCp')!.innerHTML = Math.round(KisiBasiPay * 100) / 100 + (KCs > 1 ? " x " + KCs + "<br\> (" + Math.round(KCp * 100) / 100 + ")" : ""); }
+    else { document.getElementById('KCp')!.innerHTML = ""; }
+
+
+    if (Ap > 0) { document.getElementById('Ap')!.style.color = "red"; }
+    else { document.getElementById('Ap')!.style.color = "black"; }
+    Number(document.getElementById('Ap')!.innerHTML) == Math.round(Ap * 100) / 100;
+
+
+    if (Bp > 0) { document.getElementById('Bp')!.style.color = "red"; }
+    else { document.getElementById('Bp')!.style.color = "black"; }
+    Number(document.getElementById('Bp')!.innerHTML)== Math.round(Bp * 100) / 100;
+
+
+
+    if (EsVar > 0 && EsHesap > 0) {
+      document.getElementById('Es1p')!.style.color = "red";
+      Es1p = EsHesap;
+    }
+    else { document.getElementById('Es1p')!.style.color = "black"; }
+    Number(document.getElementById('Es1p')!.innerHTML) == Math.round(Es1p * 100) / 100;
+
+    if (EsVar > 1 && EsHesap > 0) {
+      document.getElementById('Es2p')!.style.color = "red";
+      Es2p = EsHesap;
+    }
+    else { document.getElementById('Es2p')!.style.color = "black"; }
+    Number(document.getElementById('Es2p')!.innerHTML) == Math.round(Es2p * 100) / 100;
+
+    if (EsVar > 2 && EsHesap > 0) {
+      document.getElementById('Es3p')!.style.color = "red";
+      Es3p = EsHesap;
+    }
+    else { document.getElementById('Es3p')!.style.color = "black"; }
+    Number(document.getElementById('Es3p')!.innerHTML) == Math.round(Es3p * 100) / 100;
+
+    if (EsVar > 3 && EsHesap > 0) {
+      document.getElementById('Es4p')!.style.color = "red";
+      Es4p = EsHesap;
+    }
+    else { document.getElementById('Es4p')!.style.color = "black"; }
+    Number(document.getElementById('Es4p')!.innerHTML) == Math.round(Es4p * 100) / 100;
+
+
+    if (EKp > 0) {
+      document.getElementById('EKp')!.style.color = "red";
+      KisiBasiPay = EKp / EKs;
+    }
+    else {
+      document.getElementById('EKp')!.style.color = "black";
+    }
+    if (EKp > 0) { document.getElementById('EKp')!.innerHTML = Math.round(KisiBasiPay * 100) / 100 + (EKs > 1 ? " x " + EKs + "<br\> (" + Math.round(EKp * 100) / 100 + ")" : ""); }
+    else { Number(document.getElementById('EKp')!.innerHTML) == 0; }
+
+
+    if (KKp > 0) {
+      document.getElementById('KKp')!.style.color = "red";
+      KisiBasiPay = KKp / KKs;
+    }
+    else { document.getElementById('KKp')!.style.color = "black"; }
+    if (KKp > 0) { document.getElementById('KKp')!.innerHTML = Math.round(KisiBasiPay * 100) / 100 + (KKs > 1 ? " x " + KKs + "<br\> (" + Math.round(KKp * 100) / 100 + ")" : ""); }
+    else { Number(document.getElementById('KKp')!.innerHTML) == 0; }
+
+
+    Xp = Mal - (ECp + KCp + Ap + Bp + Es1p + Es2p + Es3p + Es4p + EKp + KKp);
+
+
+
+
+
+    if (Xp > 2) { document.getElementById('Xp')!.style.color = "red"; }
+    else { document.getElementById('Xp')!.style.color = "black"; }
+    Number(document.getElementById('Xp')!.innerHTML) == Math.round(Xp * 100) / 100;
+  }
