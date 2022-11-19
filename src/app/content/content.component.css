@@ -12,7 +12,7 @@
     margin: auto;
     border-color: rgb(190, 189, 189);
     border-collapse: separate;
-  border-radius: 10px;
+    border-radius: 10px;
     border-spacing: 0;
 }
 .table-bordered tr,td{
@@ -22,12 +22,28 @@
 .table-bordered td{
         text-align: center;       
 }
-.container{
+.input{
     width: 500px;
-    height: 650px;
-    background-color:rgb(215, 236, 248);
-    border-color: rgb(133, 133, 248);
+    height: 550px;   
+	box-shadow: 0 0 5px #9e9405;
+    backdrop-filter: blur(15px);
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    border-color: #43443a;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
+    margin: 30px auto;  
+}
+.container{
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba(54, 56, 90, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    margin: 50px auto;
+    border-radius: 10px;
+    left: 0;
+    right: 0; 
+    text-align: center;
+    overflow: auto;    
 }

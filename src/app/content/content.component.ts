@@ -60,14 +60,34 @@ export class ContentComponent {
   ];
 
   calculateSon(): void {
-    this.resultS = (this.valueS * (2 * (this.value1 / (2 * this.valueS + this.value))));
+    if(this.valueS > 0 && !this.father && !this.mother && !this.wife && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultS =  2 * (this.value1 / (2 * this.valueS + this.value))
+    }
+    
+    else if(this.valueS > 0 && this.value == 0 && !this.father && !this.mother && this.wife && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultS = (this.value1 - (this.value1 / 8)) / this.valueS
+    }
+
+    else if(this.valueS > 0 && this.father && this.mother && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultS = (this.value1 - (2 * (1 / 6) * this.value1)) / this.valueS 
+    }
+    else if(this.valueS > 0 && this.value > 0 && !this.father && !this.mother && this.wife && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultS = 2*((this.value1 - (this.value1 / 8)) / (2 * this.valueS + this.value))
+    }
+    
   }
   
   calculateDaughters(): void {
-
-    if(this.valueS > 0) 
+    if(this.valueS == 0 && !this.father && !this.mother && !this.wife && this.valueBro == 0 && this.valueSis == 0){
+      this.resultD = this.value1;
+    }
+    else if(this.valueS > 0 && !this.father && !this.mother && !this.wife && this.valueBro == 0 && this.valueSis == 0) 
     {
-      this.resultD = (this.value * ((this.value1 / (2 * this.valueS + this.value))))
+      this.resultD = ((this.value1 / (2 * this.valueS + this.value)))
     }
     else if((this.valueS == 0 && this.value >= 2)) 
     {
@@ -80,6 +100,10 @@ export class ContentComponent {
     else if(this.valueS == 0 && this.value == 0 && this.father && this.mother && (this.valueBro + this.valueSis) >= 2) 
     {
       this.resultD = this.valueSis * (((1 / 3) * this.value1) / (2 * this.valueBro + this.valueSis))
+    }
+    else if(this.valueS > 0 && this.value > 0 && !this.father && !this.mother && this.wife && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultD = (this.value1 - (this.value1 / 8)) / (2 * this.valueS + this.value)
     }
   }
 
@@ -115,6 +139,10 @@ export class ContentComponent {
     else if(this.valueS == 0 && this.value == 0 && this.father && !this.mother && this.valueBro == 0 && this.valueSis == 1)
     {
       this.resultF = this.value1 - (this.resultM + this.resultSi + this.resultW);
+    }
+    else if(this.valueS > 0 && this.father && this.mother && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultF = (1 / 6) * this.value1
     }
   }
 
@@ -156,16 +184,20 @@ export class ContentComponent {
     {
       this.resultM = (1 / 3) * this.value1
     }
+    else if(this.valueS > 0 && this.father && this.mother && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultM = (1 / 6) * this.value1
+    }
   }
 
  calculateWife():void{
   if (this.wife && this.valueS == 0 && this.value >= 2) 
   {
-    this.resultW = (1 / 8) * (this.value1 - this.resultD)
+    this.resultW = (1 / 8) * this.value1
   }
     else if (this.wife && this.valueS == 0 && this.value == 1) 
     {
-      this.resultW = (1 / 8) * (this.value1 - this.resultD)
+      this.resultW = (1 / 8) * this.value1
     }
     else if (this.valueS == 0 && this.value == 0 && this.father && !this.mother && (this.valueBro + this.valueSis) >= 2) 
     {
@@ -227,6 +259,14 @@ export class ContentComponent {
     {
       this.resultW = (1 / 4) * (this.value1 / 2)
     }
+    else if(this.valueS > 0 && this.value == 0 && !this.father && !this.mother && this.wife && this.valueBro == 0 && this.valueSis == 0){
+      this.resultW = (1 / 8) * this.value1
+    }
+    else if(this.valueS > 0 && this.value > 0 && !this.father && !this.mother && this.wife && this.valueBro == 0 && this.valueSis == 0)
+    {
+      this.resultW = 1 * (this.value1 / 8)
+    }
+    
   }
 
   calculateBrothers(): void {
@@ -304,7 +344,7 @@ export class ContentComponent {
   }
 
   Calculate() {
-    this.calculateSon()
+    this.calculateSon() 
     this.calculateDaughters()
     this.calculateFather()
     this.calculateMother()
