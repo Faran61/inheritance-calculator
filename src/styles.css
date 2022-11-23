@@ -3,4 +3,5 @@ body{
     background-image: url("/assets/images/bg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: 'EB Garamond', serif;
 }

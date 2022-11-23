@@ -1,9 +1,39 @@
+.container{
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 40px 42px 0 rgba(76, 77, 109, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    margin: 50px auto;
+    border-radius: 10px;
+    left: 0;
+    right: 0; 
+    text-align: center;
+    overflow: auto;    
+}
 .info-p{
-    border-color: rgb(133, 133, 248);
+    border-width: 1px;
+    background-color: #181510;
+    color: #E9DBBD;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.input{
+    width: 500px;
+    height: 550px;   
+    font-size: 17px;
+    font-weight: 600;
+	box-shadow: 0 1px 10px #201e03;
+    backdrop-filter: blur(15px);
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    color: #242121;
+    border-color: #43443a;
     border-style: solid;
     border-width: 1px;
-    background-color: rgb(193, 193, 235);
+    border-radius: 15px;
+    margin: 30px auto;  
 }
+
 .table{
     width: 700px;
     height: 500px;
@@ -21,29 +51,4 @@
 }
 .table-bordered td{
         text-align: center;       
-}
-.input{
-    width: 500px;
-    height: 550px;   
-	box-shadow: 0 0 5px #9e9405;
-    backdrop-filter: blur(15px);
-    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-    border-color: #43443a;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    margin: 30px auto;  
-}
-.container{
-    background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 8px 32px 0 rgba(54, 56, 90, 0.37);
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    margin: 50px auto;
-    border-radius: 10px;
-    left: 0;
-    right: 0; 
-    text-align: center;
-    overflow: auto;    
 }

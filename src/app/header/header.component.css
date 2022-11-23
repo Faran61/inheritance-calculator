@@ -16,13 +16,4 @@ p{
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, .15);
   }
-  /* .info{
-    background-color: var(--bs-body-bg);
-    width: 70%;
-    left: 200px;
-    top: 10px;
-    position: relative;
-    padding: 20px 0;
-    border-top-right-radius: 11px;
-    border-top-left-radius: 11px
-  } */
+  

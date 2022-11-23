@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -59,6 +60,34 @@ export class ContentComponent {
     }
   ];
 
+  formGroup!: FormGroup;
+
+  data = {
+    companies: [
+      {
+        company: "example comany"
+      }
+    ]
+  }
+
+  constructor(private fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+    companies: this.fb.array([])})
+}
+// addNewCompany() {
+//   let control = <FormArray>this.formGroup.controls.companies;
+//   control.push(
+//     this.fb.group({
+//       company: ['']
+//     })
+//   )
+// }
+
+// deleteCompany(index: number) {
+//   let control = <FormArray>this.formGroup.controls.companies;
+//   control.removeAt(index)
+// }
+
   calculateSon(): void {
     if(this.valueS > 0 && !this.father && !this.mother && !this.wife && this.valueBro == 0 && this.valueSis == 0)
     {
@@ -72,7 +101,7 @@ export class ContentComponent {
 
     else if(this.valueS > 0 && this.father && this.mother && this.valueBro == 0 && this.valueSis == 0)
     {
-      this.resultS = (this.value1 - (2 * (1 / 6) * this.value1)) / this.valueS 
+      this.resultS = (this.value1 - ((1 / 3) * this.value1) - this.value * ((this.value1- (1 / 3) * this.value1) / (2 * this.valueS + this.value))) / this.valueS 
     }
     else if(this.valueS > 0 && this.value > 0 && !this.father && !this.mother && this.wife && this.valueBro == 0 && this.valueSis == 0)
     {
