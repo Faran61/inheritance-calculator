@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background-image: url("/assets/images/bg.jpg");
+    background-image: url("/assets/images/backg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'EB Garamond', serif;
+    font-family: 'PT Sans Narrow', sans-serif;
 }

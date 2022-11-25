@@ -1,9 +1,9 @@
 .container{
-    background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 40px 42px 0 rgba(76, 77, 109, 0.37);
+    background: rgba(218, 214, 191, 0.45);
+    box-shadow: 35px 40px 52px 20px rgba(53, 41, 9, 0.97);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
-    margin: 50px auto;
+    margin: 70px auto;
     border-radius: 10px;
     left: 0;
     right: 0; 
@@ -33,14 +33,12 @@
     margin: 30px 0;  
     float: left;
 }
-
 .table-responsive{
     float: left;
     margin: 30px 0 0 50px;    
 }
 .table{
-    width: 550px;
-    height: 500px;
+    width: 500px;    
     margin: auto;   
     border-collapse: separate;
     border-radius: 10px;
@@ -49,11 +47,10 @@
     overflow: hidden;
 }
 .table-bordered tr, th{
-    background-color: #181510;
-    color: #E9DBBD;
-    font-size: larger;
-    border: 1px solid #937c0c;
-    
+    background-color: #292826;
+    color: #a7a791;
+    font-size: 19px;
+    border: 1px solid #937c0c;   
 }
 table tr:last-child td:last-child {
     border-bottom-right-radius:10px;
@@ -70,9 +67,19 @@ table tr:first-child th:first-child {
 table tr:first-child th:last-child {
     border-top-right-radius:10px
 }
+
+table .s:first-child .so:first-child {
+    border-top-left-radius: 0
+}
+
+table .s:first-child .so:last-child {
+    border-top-right-radius: 0
+}
+
 .table-bordered tr,td{
     border: 1px solid #937c0c;
-    background: linear-gradient(#a89748, #c9c389) ;
+    background: linear-gradient(#c7b047, #cac35f) ;
     color: #242121;   
 }
+
 

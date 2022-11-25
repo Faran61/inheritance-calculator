@@ -1,6 +1,6 @@
 import { group } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, inject, OnInit, Output, ViewChild } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,7 +8,12 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
-export class ContentComponent {
+export class ContentComponent implements OnInit{
+
+  // data: any = {
+  //   sons: [1, 2, 3]
+  // };
+
   select: any = [0, 1, 2, 3, 4];
 
   value: number = 0;
@@ -30,38 +35,126 @@ export class ContentComponent {
   wife: boolean = false;
 
 
-  sonsArray = this.formBuilder.array([], [Validators.required]);
-
+  familyGroup = this.formBuilder.group({
+    sonsArray: this.formBuilder.array([]),
+    daughterArray: this.formBuilder.array([]),
+    sisterArray: this.formBuilder.array([]),
+    brotherArray: this.formBuilder.array([])
+  });
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() { }
-
-  createItem(): any {
-    return this.formBuilder.group({
-      sonName: '',
-      daughterName: '',
-      SisterName: '',
-      BrotherName: ''
-    });
+  ngOnInit() {
   }
 
-  getControls() {
-    return this.sonsArray.controls;
+  getValue() {}
+
+  get getControls(): FormArray {
+    return this.familyGroup.get('sonsArray') as FormArray;
   }
 
-  addItem() {
-    this.sonsArray.push(this.createItem());
-  }
-  removeItem(index: number) {
-    this.sonsArray.removeAt(index);
+  get getControls1(): FormArray {
+    return this.familyGroup.get('daughterArray') as FormArray;
   }
 
-  convertToGroup(group: any): FormGroup {
-    return group as FormGroup
+  get getControls2(): FormArray {
+    return this.familyGroup.get('brotherArray') as FormArray;
   }
 
-  calculateSon(): void {    
+  get getControls3(): FormArray {
+    return this.familyGroup.get('sisterArray') as FormArray;
+  }
+
+
+  addSon() {
+    this.valueS++
+    this.familyGroup.controls.sonsArray.push((new FormBuilder).control({
+      son: [null, [Validators.required]]
+    }));
+  }
+
+  removeSon(){   
+    if (this.valueS !== -1) {
+      this.familyGroup.controls.sonsArray.removeAt(this.familyGroup.controls.sonsArray.length - 1);
+      this.valueS--
+    }
+    console.log(this.valueS)
+    console.log(this.familyGroup.controls.sonsArray.value);
+  }
+
+  addDaughter() {
+    this.value++
+    this.familyGroup.controls.daughterArray.push((new FormBuilder).control({
+      daughter: [null, [Validators.required]]
+    }));
+    console.log(this.value)
+    console.log(this.familyGroup.controls.daughterArray.value);
+  }
+
+  removeDaughter(){   
+    if (this.value !== -1) {
+      this.familyGroup.controls.daughterArray.removeAt(this.familyGroup.controls.daughterArray.length - 1);
+      this.value--
+    }
+    console.log(this.value)
+    console.log(this.familyGroup.controls.daughterArray.value);
+  }
+
+  addSister() {
+    this.valueSis++
+    this.familyGroup.controls.sisterArray.push((new FormBuilder).control({
+      sister: [null, [Validators.required]]
+    }));
+    console.log(this.valueSis)
+    console.log(this.familyGroup.controls.sisterArray.value);
+  }
+
+  removeSister(){   
+    if (this.valueSis !== -1) {
+      this.familyGroup.controls.sisterArray.removeAt(this.familyGroup.controls.sisterArray.length - 1);
+      this.valueSis--
+    }
+    console.log(this.valueSis)
+    console.log(this.familyGroup.controls.sisterArray.value);
+  }
+
+  addBrother() {
+    this.valueBro++
+    this.familyGroup.controls.brotherArray.push((new FormBuilder).control({
+      brother: [null, [Validators.required]]
+    }));
+    console.log(this.valueBro)
+    console.log(this.familyGroup.controls.brotherArray.value);
+  }
+
+  removeBrother(){   
+    if (this.valueBro !== -1) {
+      this.familyGroup.controls.brotherArray.removeAt(this.familyGroup.controls.brotherArray.length - 1);
+      this.value--
+    }
+    console.log(this.valueBro)
+    console.log(this.familyGroup.controls.brotherArray.value);
+  }
+
+  // addItem() {
+  //   const newControl = new FormControl({
+  //     son: [null, [Validators.required]]
+  //   })
+  //   this.familyGroup.controls.sonsArray.push(newControl)
+  // }
+
+  // removeItem(index: number) {
+  //   this.familyGroup.controls.sonsArray.removeAt(index);
+  //   // this.daughterArray.removeAt(index);
+  //   // this.brotherArray.removeAt(index);
+  //   // this.sisterArray.removeAt(index);
+  // }
+
+  // convertToGroup(group: any): FormGroup {
+  //   return group as FormGroup
+  // }
+
+  calculateSon(): void {
     if (this.valueS > 0 && !this.father && !this.mother && !this.wife && this.valueBro == 0 && this.valueSis == 0) {
       this.resultS = 2 * (this.value1 / (2 * this.valueS + this.value))
     }

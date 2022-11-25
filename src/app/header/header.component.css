@@ -1,19 +1,18 @@
 h1, h5{
-    color: #c3db9b;
+    color: #4a4e07;
 }
-p{
-    margin: 0 auto;
-    text-align: center;
-    width: 80%;
-    color: #c3db9b;
-    font-weight: 400;
-  }
+h1{
+  font-size: 50px;
+}
+h5{
+  font-size: 30px;
+}
   .logo{
     margin-left: 35px;
     border-radius: 15px;
   }
   .navbar-class{
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, .15);
+    background-color: rgba(255, 255, 255, .2);
   }
   

@@ -1,152 +1,243 @@
 <div class="container">
 
-    <div class="input mb-4">
+    <div class="input mb-4 ms-4" [formGroup]="familyGroup">
         <div class="info-p p-2">
-            <h5>Information About Deceased Man</h5>
+            <h5 style="font-size: 25px">Information About Deceased Man</h5>
         </div>
+
         <div class="row ms-2 mb-3 mt-2">
-            <label for="colFormLabel" class="col-5 col-form-label">Property amount:</label>
+            <label for="overall" class="col-5 col-form-label">Property amount:</label>
             <div class="col-5">
-                <input type="number" min="0" class="form-control" id="overall" value="0" [(ngModel)]="value1" name="overall">
+                <input type="number" min="0" class="form-control" id="overall" value="0" [(ngModel)]="value1"
+                    [ngModelOptions]="{standalone: true}" name="overall">
             </div>
         </div>
 
+
         <div class="row ms-2 mb-3">
-            <label for="colFormLabel" class="col-5 col-form-label">Father:</label>
+            <label for="father" class="col-5 col-form-label">Father:</label>
             <div class="col-3">
-                <select class="form-select" id="father" [(ngModel)]="father">
+                <select class="form-select" id="father" [(ngModel)]="father" [ngModelOptions]="{standalone: true}">
                     <option [value]="true">Yes</option>
                     <option [value]="false">No</option>
                 </select>
             </div>
         </div>
 
+
         <div class="row ms-2 mb-3">
-            <label for="colFormLabel" class="col-5 col-form-label">Mother:</label>
+            <label for="mother" class="col-5 col-form-label">Mother:</label>
             <div class="col-3">
-                <select class="form-select" id="mother" [(ngModel)]="mother">
+                <select class="form-select" id="mother" [(ngModel)]="mother" [ngModelOptions]="{standalone: true}">
                     <option [value]="true">Yes</option>
                     <option [value]="false">No</option>
                 </select>
             </div>
         </div>
 
+
         <div class="row ms-2 mb-3">
-            <label for="colFormLabel" class="col-5 col-form-label">Wife:</label>
+            <label for="wife" class="col-5 col-form-label">Wife:</label>
             <div class="col-3">
-                <select class="form-select" id="wife" [(ngModel)]="wife">
+                <select class="form-select" id="wife" [(ngModel)]="wife" [ngModelOptions]="{standalone: true}">
                     <option [value]="true">Yes</option>
                     <option [value]="false">No</option>
                 </select>
             </div>
         </div>
 
-        
+
         <div class="row ms-2 mb-3">
-            
-            <label for="colFormLabel" class="col-5 col-form-label">Number of son(s):</label>
-            <div class="col-4">
-                <input type="text" class="form-control" id="son" name="son" placeholder="name">
-            </div>
-            <div class="col-md-2 ps-0">
-                <input type="number" min="0" class="form-control" id="son" [(ngModel)]="valueS" name="son">
-            </div>
+            <label for="colFormLabelson" class="col-5 col-form-label">Number of son(s):</label>
             <div class="col-md-1 pt-1 ps-0">
-                <button (click)="addItem()" type="button" class="btn btn-danger btn-sm">+</button>
-                </div>
-
-            <div class="row" [formGroup]="sonsArray">
-            <ng-container formArrayName="names" *ngFor="let item of getControls(); let i = index;">            
-                <div class="col-4">
-                    <input formControlName="sonName" type="text" class="form-control" id="son" name="son" placeholder="name">
-                </div>
-                <div class="col-md-2">
-                    <input formControlName="sonVal" type="number" min="0" class="form-control" id="sonName" [(ngModel)]="valueS" name="son">
-                </div>  
-                <div class="col-md-1 pt-1 ps-0">  
-                <button (click)="removeItem(i)" type="button" class="btn btn-danger btn-sm">-</button>   
-                </div>                     
-            </ng-container>
-            </div>    
-            </div>                  
-        
-        <div class="row ms-2 mb-3">
-            <label for="colFormLabel" class="col-5 col-form-label">Number of daughter(s):</label>
-            <div class="col-3">
-                <input type="number" min="0" class="form-control" id="daughter" value="0" [(ngModel)]="value" name="daughter">
+                <button (click)="addSon()" type="button" class="btn btn-danger btn-sm">+</button>
+            </div>
+            <div class="row">
+                <ng-container *ngFor="let item of getControls.controls; let i = index;">
+                    <div class="col-5"></div>
+                    <div class="col-4">
+                        <input [(ngModel)]="sonsArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="son" name="son" placeholder="name">
+                    </div>
+                    <div class="col-md-1 mt-1 ps-0 mb-2">
+                        <button (click)="removeSon(i)" type="button" class="btn btn-danger btn-sm">-</button>
+                    </div>
+                </ng-container>
             </div>
         </div>
 
+
         <div class="row ms-2 mb-3">
-            <label for="colFormLabel" class="col-5 col-form-label">Brother(s):</label>
-            <div class="col-3">
-                <input type="number" min="0" class="form-control" id="brother" value="0" [(ngModel)]="valueBro" name="brother">
+            <label for="daughter" class="col-5 col-form-label">Number of daughter(s):</label>
+            <div class="col-md-1 pt-1 ps-0">
+                <button (click)="addDaughter()" type="button" class="btn btn-danger btn-sm">+</button>
+            </div>
+
+            <div class="row">
+                <ng-container *ngFor="let item of getControls1.controls; let i = index;">
+                    <div class="col-5"></div>
+                    <div class="col-4">
+                        <input [(ngModel)]="daughterArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="daughter" name="daughter" placeholder="name">
+                    </div>
+                    <div class="col-md-1 mt-1 ps-0 mb-2">
+                        <button (click)="removeDaughter(i)" type="button" class="btn btn-danger btn-sm">-</button>
+                    </div>
+                </ng-container>
             </div>
         </div>
 
+
         <div class="row ms-2 mb-3">
-            <label for="colFormLabel" class="col-5 col-form-label">Sister(s):</label>
-            <div class="col-3">
-                <input type="number" min="0" class="form-control" id="sister" value="0" [(ngModel)]="valueSis" name="sister">
+            <label for="brother" class="col-5 col-form-label">Brother(s):</label>
+            <div class="col-md-1 pt-1 ps-0">
+                <button (click)="addBrother()" type="button" class="btn btn-danger btn-sm">+</button>
+            </div>
+
+            <div class="row">
+                <ng-container *ngFor="let item of getControls2.controls; let i = index;">
+                    <div class="col-5"></div>
+                    <div class="col-4">
+                        <input [(ngModel)]="brotherArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="brother" name="brother" placeholder="name">
+                    </div>
+                    <div class="col-md-1 mt-1 ps-0 mb-2">
+                        <button (click)="removeBrother(i)" type="button" class="btn btn-danger btn-sm">-</button>
+                    </div>
+                </ng-container>
             </div>
         </div>
-        <div class="d-grid col-3 mt-4 mx-auto">
-            <button type="button" (click)="Calculate()" class="btn btn-primary btn-lg">Calculate</button>
+
+
+        <div class="row ms-2 mb-3">
+            <label for="sister" class="col-5 col-form-label">Sister(s):</label>
+            <div class="col-md-1 pt-1 ps-0">
+                <button (click)="addSister()" type="button" class="btn btn-danger btn-sm">+</button>
+            </div>
+
+            <div class="row">
+                <ng-container *ngFor="let item of getControls3.controls; let i = index;">
+                    <div class="col-5"></div>
+                    <div class="col-4">
+                        <input [(ngModel)]="sisterArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="sister" name="sister" placeholder="name">
+                    </div>
+                    <div class="col-md-1 mt-1 ps-0 mb-2">
+                        <button (click)="removeSister(i)" type="button" class="btn btn-danger btn-sm">-</button>
+                    </div>
+                </ng-container>
+            </div>
         </div>
-</div> 
 
 
-    <div class="table-responsive mb-4">
-        <h3 class="text-center" style="color: greenyellow">Division of Inheritance result</h3>
+        <div class="d-grid col-3 mt-4 pb-2 mx-auto">
+            <button type="button" (click)="Calculate()" class="fw-normal btn btn-dark btn-lg">Calculate</button>
+        </div>
+    </div>
+
+
+    <div class="table-responsive mb-4" [formGroup]="familyGroup">
+        <h3 class="text-center" style="color: rgb(73, 17, 17); font-weight: 900;">Division of Inheritance result</h3>
+
         <table class="table rounded table-success table-bordered align-middle">
-            
-                <thead>
+            <thead>
                 <tr>
-                    <th scope="col">Inheritor</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Amount</th>
-                  </tr>
+                    <th scope="col" colspan="2">The Son Inheritor</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr class="s">
+                    <th class="so" scope="col">Name</th>
+                    <th class="so" scope="col">The Share</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of getControls.controls; let i = index;">
+                <tr>                    
+                    <td>{{sonsArray}}</td>
+                    <td>{{ resultS.toFixed(2) }}</td>                
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+
+        <table class="table rounded table-success table-bordered align-middle mt-3">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2">The Daughter Inheritor</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr class="s">
+                    <th class="so" scope="col">Name</th>
+                    <th class="so" scope="col">The Share</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of getControls1.controls; let i = index;">
+                <tr>
+                    <td>{{daughterArray}}</td>
+                    <td>{{ resultD.toFixed(2) }}</td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+
+        <table class="table rounded table-success table-bordered align-middle mt-3">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2">The Sister Inheritor</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr class="s">
+                    <th class="so" scope="col">Name</th>
+                    <th class="so" scope="col">The Share</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of getControls3.controls; let i = index;">
+                <tr>
+                    <td>{{sisterArray}}</td>
+                    <td>{{ resultSi.toFixed(2) }}</td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+
+        <table class="table rounded table-success table-bordered align-middle mt-3">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2">The Brother Inheritor</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr class="s">
+                    <th class="so" scope="col">Name</th>
+                    <th class="so" scope="col">The Share</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of getControls2.controls; let i = index;">
+                <tr>
+                    <td>{{brotherArray}}</td>
+                    <td>{{ resultB.toFixed(2) }}</td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+
+        <table class="table rounded table-success table-bordered align-middle mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">The Share of Mother</th>
+                    <th scope="col">The Share of Father</th>
+                    <th scope="col">The Share of Wife</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>The Share of son(s)</td>
-                    <td></td>
-                    <td>{{ resultS.toFixed(2) }}</td>
-                </tr>
-                <tr>
-                    <td>The Share of daughter(s)</td>
-                    <td></td>
-                    <td>{{ resultD.toFixed(2) }}</td>
-                </tr>
-                <tr>
-                    <td>The Share of mother</td>
-                    <td></td>
                     <td>{{ resultM.toFixed(2) }}</td>
-                </tr>
-                <tr>
-                    <td>The Share of father</td>
-                    <td></td>
                     <td>{{ resultF.toFixed(2) }}</td>
-                </tr>
-                <tr>
-                    <td>The Share of the Wife</td>
-                    <td></td>
                     <td>{{ resultW.toFixed(2) }}</td>
                 </tr>
-                <tr>
-                    <td>The Share of Sister(s)</td>
-                    <td></td>
-                    <td>{{ resultSi.toFixed(2) }}</td>
-                </tr>
-                <tr>
-                    <td>The Share of Brother(s)</td>
-                    <td></td>
-                    <td>{{ resultB.toFixed(2) }}</td>
-                </tr>
-                
-                
             </tbody>
         </table>
     </div>
-
 </div>
