@@ -49,14 +49,15 @@
 
         <div class="row ms-2 mb-3">
             <label for="colFormLabelson" class="col-5 col-form-label">Number of son(s):</label>
-            <div class="col-md-1 pt-1 ps-0">
+            <div class="col-1 pt-1 ps-0">
                 <button (click)="addSon()" type="button" class="btn btn-danger btn-sm">+</button>
             </div>
             <div class="row">
                 <ng-container *ngFor="let item of getControls.controls; let i = index;">
                     <div class="col-5"></div>
                     <div class="col-4">
-                        <input [(ngModel)]="sonsArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="son" name="son" placeholder="name">
+                        <input [(ngModel)]="item.sonsArray" [ngModelOptions]="{standalone: true}" type="text"
+                            class="form-control" id="son" name="son" placeholder="name">
                     </div>
                     <div class="col-md-1 mt-1 ps-0 mb-2">
                         <button (click)="removeSon(i)" type="button" class="btn btn-danger btn-sm">-</button>
@@ -68,7 +69,7 @@
 
         <div class="row ms-2 mb-3">
             <label for="daughter" class="col-5 col-form-label">Number of daughter(s):</label>
-            <div class="col-md-1 pt-1 ps-0">
+            <div class="col-1 pt-1 ps-0">
                 <button (click)="addDaughter()" type="button" class="btn btn-danger btn-sm">+</button>
             </div>
 
@@ -76,7 +77,8 @@
                 <ng-container *ngFor="let item of getControls1.controls; let i = index;">
                     <div class="col-5"></div>
                     <div class="col-4">
-                        <input [(ngModel)]="daughterArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="daughter" name="daughter" placeholder="name">
+                        <input [(ngModel)]="item.daughterArray" [ngModelOptions]="{standalone: true}" type="text"
+                            class="form-control" id="daughter" name="daughter" placeholder="name">
                     </div>
                     <div class="col-md-1 mt-1 ps-0 mb-2">
                         <button (click)="removeDaughter(i)" type="button" class="btn btn-danger btn-sm">-</button>
@@ -88,7 +90,7 @@
 
         <div class="row ms-2 mb-3">
             <label for="brother" class="col-5 col-form-label">Brother(s):</label>
-            <div class="col-md-1 pt-1 ps-0">
+            <div class="col-1 pt-1 ps-0">
                 <button (click)="addBrother()" type="button" class="btn btn-danger btn-sm">+</button>
             </div>
 
@@ -96,7 +98,8 @@
                 <ng-container *ngFor="let item of getControls2.controls; let i = index;">
                     <div class="col-5"></div>
                     <div class="col-4">
-                        <input [(ngModel)]="brotherArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="brother" name="brother" placeholder="name">
+                        <input [(ngModel)]="item.brotherArray" [ngModelOptions]="{standalone: true}" type="text"
+                            class="form-control" id="brother" name="brother" placeholder="name">
                     </div>
                     <div class="col-md-1 mt-1 ps-0 mb-2">
                         <button (click)="removeBrother(i)" type="button" class="btn btn-danger btn-sm">-</button>
@@ -108,7 +111,7 @@
 
         <div class="row ms-2 mb-3">
             <label for="sister" class="col-5 col-form-label">Sister(s):</label>
-            <div class="col-md-1 pt-1 ps-0">
+            <div class="col-1 pt-1 ps-0">
                 <button (click)="addSister()" type="button" class="btn btn-danger btn-sm">+</button>
             </div>
 
@@ -116,7 +119,8 @@
                 <ng-container *ngFor="let item of getControls3.controls; let i = index;">
                     <div class="col-5"></div>
                     <div class="col-4">
-                        <input [(ngModel)]="sisterArray" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="sister" name="sister" placeholder="name">
+                        <input [(ngModel)]="item.sisterArray" [ngModelOptions]="{standalone: true}" type="text"
+                            class="form-control" id="sister" name="sister" placeholder="name">
                     </div>
                     <div class="col-md-1 mt-1 ps-0 mb-2">
                         <button (click)="removeSister(i)" type="button" class="btn btn-danger btn-sm">-</button>
@@ -149,11 +153,11 @@
             </thead>
             <tbody>
                 <ng-container *ngFor="let item of getControls.controls; let i = index;">
-                <tr>                    
-                    <td>{{sonsArray}}</td>
-                    <td>{{ resultS.toFixed(2) }}</td>                
-                </tr>
-            </ng-container>
+                    <tr>
+                        <td>{{item.sonsArray}}</td>
+                        <td>{{ resultS.toFixed(2) }}</td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
 
@@ -171,11 +175,11 @@
             </thead>
             <tbody>
                 <ng-container *ngFor="let item of getControls1.controls; let i = index;">
-                <tr>
-                    <td>{{daughterArray}}</td>
-                    <td>{{ resultD.toFixed(2) }}</td>
-                </tr>
-            </ng-container>
+                    <tr>
+                        <td>{{item.daughterArray}}</td>
+                        <td>{{ resultD.toFixed(2) }}</td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
 
@@ -193,11 +197,11 @@
             </thead>
             <tbody>
                 <ng-container *ngFor="let item of getControls3.controls; let i = index;">
-                <tr>
-                    <td>{{sisterArray}}</td>
-                    <td>{{ resultSi.toFixed(2) }}</td>
-                </tr>
-            </ng-container>
+                    <tr>
+                        <td>{{item.sisterArray}}</td>
+                        <td>{{ resultSi.toFixed(2) }}</td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
 
@@ -215,11 +219,11 @@
             </thead>
             <tbody>
                 <ng-container *ngFor="let item of getControls2.controls; let i = index;">
-                <tr>
-                    <td>{{brotherArray}}</td>
-                    <td>{{ resultB.toFixed(2) }}</td>
-                </tr>
-            </ng-container>
+                    <tr>
+                        <td>{{item.brotherArray}}</td>
+                        <td>{{ resultB.toFixed(2) }}</td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
 

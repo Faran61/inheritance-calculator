@@ -1,5 +1,5 @@
 .container{
-    background: rgba(218, 214, 191, 0.45);
+    background: rgba(218, 214, 191, 0.15);
     box-shadow: 35px 40px 52px 20px rgba(53, 41, 9, 0.97);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
