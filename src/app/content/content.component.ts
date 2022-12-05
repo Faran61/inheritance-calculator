@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -34,7 +34,8 @@ export class ContentComponent implements OnInit {
     sonsArray: this.formBuilder.array([]),
     daughterArray: this.formBuilder.array([]),
     sisterArray: this.formBuilder.array([]),
-    brotherArray: this.formBuilder.array([])
+    brotherArray: this.formBuilder.array([]),
+    
   });
 
   constructor(private formBuilder: FormBuilder) { }
@@ -73,8 +74,6 @@ export class ContentComponent implements OnInit {
       this.familyGroup.controls.sonsArray.removeAt(this.familyGroup.controls.sonsArray.length - 1);
       this.valueS--
     }
-    console.log(this.valueS)
-    console.log(this.familyGroup.controls.sonsArray.value);
   }
 
   addDaughter() {
@@ -388,15 +387,44 @@ export class ContentComponent implements OnInit {
     // this.calculateSisters()
 
 
-      if(this.value > 0) {        
-        this.resultD = (this.value1 - (+this.mother ? this.resultM = this.value1 / 6 : this.resultM = 0) - (+this.father ? this.resultF = this.value1 / 6 : this.resultF = 0) - (+this.wife ? this.resultW = this.value1 / 8 : this.resultW = 0)) / (2 * this.valueS + this.value)}
+      if(this.value > 0) 
+      {        
+        
+        this.resultD = (this.value1 - (+this.mother ? this.resultM = (this.value1 / 6) : this.resultM = 0) - (this.father ? (this.resultF = this.value1 / 6) : this.resultF = 0) - (+this.wife ? this.resultW = this.value1 / 8 : this.resultW = 0)) / (2 * this.valueS + this.value)
+      }
       else {this.resultD = 0}
+
       if(this.valueS > 0) 
       {
-        this.resultS = 2 * (this.value1 - (+this.mother ? this.resultM = this.value1 / 6 : this.resultM = 0) - (+this.father ? this.resultF = this.value1 / 6 : this.resultF = 0) - (+this.wife ? this.resultW = this.value1 / 8 : this.resultW = 0)) / (2 * this.valueS + this.value)
+        this.resultS = 2 * (this.value1 - (+this.mother ? this.resultM = this.value1 / 6 : this.resultM = 0) - (this.father ? (this.resultF = this.value1 / 6) : this.resultF = 0) - (+this.wife ? this.resultW = this.value1 / 8 : this.resultW = 0)) / (2 * this.valueS + this.value)     
+        
       }
-      else {this.resultS = 0}    console.log(this.father)
-console.log(this.resultF)
-  
+      else { this.resultS = 0 }    
+
+      // if(this.valueS == 0 && this.value == 0){
+        
+      //   if(+this.mother && +this.father && +this.wife  )
+      //    {
+      //   this.resultM = this.value1 / 4
+      //   this.resultW = this.value1 / 4
+      //   this.resultF = this.value1 / 2
+      //   this.resultF = this.value1 - this.resultM - this.resultW 
+      //   this.resultM = this.value1 - this.resultF - this.resultW
+      //   this.resultW = this.value1 - this.resultF - this.resultM
+      //   }     
+      //   else if(+!!this.father && +!this.mother && +!this.wife)
+      //   {
+      //     this.resultF = this.value1
+      //     this.resultM = 0
+      //     this.resultW = 0
+      //   }
+        
+      // }
+      console.log(this.father)
+      console.log(+!!this.father)
+      console.log(this.resultF)
+  console.log(this.wife)
+  console.log(+!!this.wife)
+
   }
 }

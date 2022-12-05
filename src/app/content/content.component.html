@@ -17,9 +17,9 @@
         <div class="row ms-2 mb-3">
             <label for="father" class="col-5 col-form-label">Father:</label>
             <div class="col-3">
-                <select class="form-select" id="father" [(ngModel)]="father" [ngModelOptions]="{standalone: true}">
-                    <option [value]="true">Yes</option>
-                    <option [value]="false">No</option>
+                <select class="form-select" id="father" [(ngModel)]="father" [ngModelOptions]="{standalone: true}">                   
+                    <option [ngValue]="true">Yes</option>
+                    <option [ngValue]="false">No</option>
                 </select>
             </div>
         </div>
@@ -29,8 +29,8 @@
             <label for="mother" class="col-5 col-form-label">Mother:</label>
             <div class="col-3">
                 <select class="form-select" id="mother" [(ngModel)]="mother" [ngModelOptions]="{standalone: true}">
-                    <option [value]="true">Yes</option>
-                    <option [value]="false">No</option>
+                    <option [ngValue]="true">Yes</option>
+                    <option [ngValue]="false">No</option>
                 </select>
             </div>
         </div>
@@ -40,8 +40,8 @@
             <label for="wife" class="col-5 col-form-label">Wife:</label>
             <div class="col-3">
                 <select class="form-select" id="wife" [(ngModel)]="wife" [ngModelOptions]="{standalone: true}">
-                    <option [value]="true">Yes</option>
-                    <option [value]="false">No</option>
+                    <option [ngValue]="true">Yes</option>
+                    <option [ngValue]="false">No</option>
                 </select>
             </div>
         </div>
