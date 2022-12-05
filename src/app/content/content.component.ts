@@ -399,6 +399,7 @@ export class ContentComponent implements OnInit {
         this.resultS = 2 * (this.value1 - (+this.mother ? this.resultM = this.value1 / 6 : this.resultM = 0) - (this.father ? (this.resultF = this.value1 / 6) : this.resultF = 0) - (+this.wife ? this.resultW = this.value1 / 8 : this.resultW = 0)) / (2 * this.valueS + this.value)     
         
       }
+
       else { this.resultS = 0 }    
 
       // if(this.valueS == 0 && this.value == 0){
@@ -420,11 +421,7 @@ export class ContentComponent implements OnInit {
       //   }
         
       // }
-      console.log(this.father)
-      console.log(+!!this.father)
-      console.log(this.resultF)
-  console.log(this.wife)
-  console.log(+!!this.wife)
+  
 
   }
 }
